@@ -23,21 +23,18 @@ var count = 0;
 var time = 1;
 
 function feedbacker() {
-  textarea.append("[    " + count / 1000 + "] " + output[counter] + "<br>");
-  if (time % 2 == 0) {
-    counter++;
-    textarea.append("[    " + count / 1000 + "] " + output[counter] + "<br>");
+  var random = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+
+  for (let i = 0; i < random; i++) {
+    if (counter < output.length) {
+      textarea.append(
+        "[    " + count / 1000 + "] " + (output[counter] ?? "") + "<br>"
+      );
+      counter++;
+    }
   }
-  if (time == 3) {
-    counter++;
-    textarea.append("[    " + count / 1000 + "] " + output[counter] + "<br>");
-    counter++;
-    textarea.append("[    " + count / 1000 + "] " + output[counter] + "<br>");
-    counter++;
-    textarea.append("[    " + count / 1000 + "] " + output[counter] + "<br>");
-  }
+
   window.scrollTo(0, document.body.scrollHeight);
-  counter++;
   time = Math.floor(Math.random() * 4) + 1;
   count += time;
   setTimeout(function () {
